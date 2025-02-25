@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-
+// Ask the user for the number of pages and frames (available memory slots).
 using namespace std;
 
 int main() {
