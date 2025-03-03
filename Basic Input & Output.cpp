@@ -25,3 +25,35 @@ int main() {
     
     return 0;
 }
+
+// Using Algorithm FIFO (First-In-First-Out) in which a queue to track the order of pages added.
+// When a new page arrives:
+// If there is space in memory, add it.
+// If memory is full, remove the oldest page (first in the queue) and add the new one.
+// Track page faults
+
+#include <queue>
+#include <unordered_set>
+
+int fifoPageReplacement(const vector<int>& pages, int frames) {
+    queue<int> memoryQueue;
+    unordered_set<int> memorySet;
+    int pageFaults = 0;
+
+    for (int page : pages) {
+        if (memorySet.find(page) == memorySet.end()) {
+            if (memoryQueue.size() == frames) {
+                int oldest = memoryQueue.front();
+                memoryQueue.pop();
+                memorySet.erase(oldest);
+            }
+            memoryQueue.push(page);
+            memorySet.insert(page);
+            pageFaults++;
+        }
+    }
+    return pageFaults;
+}
+
+
+
