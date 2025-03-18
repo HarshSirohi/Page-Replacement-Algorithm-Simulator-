@@ -152,10 +152,17 @@ int optimalPageReplacement(const vector<int>& pages, int frames) {
 
 
 // for displaying the result of FIFO
+// there are so many algos that we are using in it so we have to display there results also (basically testing all these algos)
 void testPageReplacementAlgorithms(const vector<int>& referenceString, int numFrames) {
     cout << "\nResults:\n";
-    cout << "FIFO Page Faults: " << fifoPageReplacement(referenceString,numFrames) << "\n";
+    
+    cout << "FIFO Page Faults: " << fifoPageReplacement(referenceString, numFrames) << "\n";
+    cout << "LRU Page Faults: " << lruPageReplacement(referenceString, numFrames) << "\n";
+    cout << "Optimal Page Faults: " << optimalPageReplacement(referenceString, numFrames) << "\n";
+
 }
+
+
 
 int main() {
     vector<int> referenceString;
